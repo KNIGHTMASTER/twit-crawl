@@ -6,7 +6,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
-        <module>twit-core</module>
+        <module>twit-crawl-web</module>
+        <module>twit-crawl-core</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
