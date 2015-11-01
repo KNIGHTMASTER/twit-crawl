@@ -6,11 +6,7 @@
 
 package com.zisal.twit.crawl.core;
 
-import twitter4j.Paging;
-import twitter4j.ResponseList;
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 import twitter4j.auth.AccessToken;
 
 /**
@@ -31,5 +27,21 @@ public class Example {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        long cursor = -1;
+        IDs ids = null;
+        System.out.println("Listing followers's ids.");
+        do {
+            try {
+                ids = twitter.getFollowersIDs("AchmadFauzi_212", cursor);
+                for (long id : ids.getIDs()) {
+                    System.out.println(id);
+                    User user = twitter.showUser(id);
+                    System.out.println(user.getName());
+                }
+            } catch (TwitterException e) {
+                e.printStackTrace();
+            }
+        } while ((cursor = ids != null ? ids.getNextCursor() : 0) != 0);
     }
 }

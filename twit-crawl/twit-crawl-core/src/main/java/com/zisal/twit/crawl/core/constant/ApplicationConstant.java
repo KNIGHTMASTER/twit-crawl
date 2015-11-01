@@ -11,62 +11,56 @@ package com.zisal.twit.crawl.core.constant;
  * @author <a href="fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 public interface ApplicationConstant {
-    interface Log {
-        String TRIPOIN_INFO = "TRIPOIN INFO";
-        String TRIPOIN_ERROR = "TRIPOIN ERROR";
+
+    interface LOG{
+        String ZUNA_INFO    = "ZUNA_INFO";
+        String ZUNA_ERROR   = "ZUNA_ERROR";
+        String ZUNA_DEBUG   = "ZUNA_DEBUG";
+        String ZUNA_WARNING = "ZUNA_WARNING";
     }
 
-    interface Rest {
-        String HOST_DEV = "10.210.9.84";
-        String HOST_PROD = "180.250.115.49";
-        int PORT_DEV = 8080;
-
-        String BASE_URL_DEV = "http://10.210.9.84:8080/mforce-rest/ws/service";
-        String BASE_URL_PROD = "http://180.250.115.49:8080/mforce-rest/ws/service";
-
-        String AUTHORIZATION = "Authorization";
-        String BASIC = "Basic";
-        String ACCEPT = "Accept";
-        String APPLICATION_JSON = "application/json";
-        String APPLICATION_XML = "application/xml";
+    interface Table{
+        String ID               = "id";
+        String CODE             = "code";
+        String NAME             = "name";
+        String REMARKS          = "remarks";
+        String CREATED_BY       = "created_by";
+        String CREATED_IP       = "created_ip";
+        String CREATED_TIME     = "created_ip";
+        String MODIFIED_BY      = "modified_by";
+        String MODIFIED_IP      = "modified_ip";
+        String MODIFIED_TIME    = "modified_time";
     }
-   
-    interface Database {
-        String TENANT_NAME = "TRIPOIN";
-        String DATABASE_NAME = "tripoin_".concat(TENANT_NAME);
-        int DB_VERSION = 1;
-        String ID = "id";
 
-        interface TableUser {
-            String TABLE_NAME = "mforce_user";
-            String USER_NAME = "user_name";
-            String LOGIN_STATUS = "login_status";
-            String IS_ACTIVE = "is_active";
+    interface VIEW{
+        String SCAFFOLD             = "/scaffold/";
+        String CONTROLLER           = "/controller/";
+        String REDIRECT             = "redirect:/";
+
+        interface URL{
+            String LIST             = "/list";
+            String EDIT_PARAM_ID    = "/edit/{id}";
         }
 
-        interface TableTestConfiguration {
-            String TABLE_NAME = "dynamic_configuration";
-            String SCHEDULER_INTERVAL = "scheduler_interval";
-            String HOST = "host";
-            String PORT = "port";
-            String START_WORKING_HOUR = "start_working_hour";
-            String STOP_WORKING_HOUR = "stop_working_hour";
-        }
-    }
-
-    interface Status {
-        interface Process {
-            String PASS = "P";
-            String FAILED = "F";
+        interface NAME{
+            String FORM             = "_form";
+            String EDIT             = "_edit";
+            String LIST             = "_list";
         }
 
-        interface Config {
-            String ACTIVE = "A";
-            String DEACTIVE = "D";
+        interface ACTION {
+            String EDIT             = "edit";
+            String DELETE           = "delete";
         }
+
     }
 
-    interface ThreadName {
-        String BGP_LOGIN = "bgp login";
+    interface Rest{
+        String BASE_URL_DEV         = "127.0.0.1";
+        String AUTHORIZATION        = "Authorization";
+        String BASIC                = "Basic";
+        String ACCEPT               = "Accept";
+        String APPLICATION_JSON     = "Application/json";
     }
+
 }
