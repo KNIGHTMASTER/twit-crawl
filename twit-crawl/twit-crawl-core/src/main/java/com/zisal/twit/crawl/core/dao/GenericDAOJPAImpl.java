@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  * Created by Achmad Fauzi on 9/14/2015 : 5:18 AM.
@@ -17,7 +19,7 @@ import javax.persistence.PersistenceContext;
  */
 public class GenericDAOJPAImpl<DATA, KEY> implements IGenericDAO<DATA, KEY> {
 
-    private Logger logger = LoggerFactory.getLogger(GenericDAOJPAImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(GenericDAOJPAImpl.class);
 
     @PersistenceContext
     @Qualifier(value = "entityManagerFactory")
@@ -58,5 +60,14 @@ public class GenericDAOJPAImpl<DATA, KEY> implements IGenericDAO<DATA, KEY> {
     @Override
     public void deleteById(Class<DATA> dataClass, KEY id) {
         delete(read(dataClass, id));
+    }
+
+    @Override
+    public void deleteAllEntities(Class<DATA> entityType) {
+        String query = new StringBuilder("DELETE FROM ")
+                .append(entityType.getSimpleName().toLowerCase())
+                .append(" e")
+                .toString();
+        entityManager.createQuery(query).executeUpdate();
     }
 }

@@ -17,4 +17,6 @@ public interface IGenericDAO<DATA, KEY> {
     void delete(DATA data);
 
     void deleteById(Class<DATA> dataClass, KEY id);
+
+    void deleteAllEntities(Class<DATA> entityType);
 }

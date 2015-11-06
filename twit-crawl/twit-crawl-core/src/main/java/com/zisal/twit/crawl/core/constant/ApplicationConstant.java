@@ -63,4 +63,11 @@ public interface ApplicationConstant {
         String APPLICATION_JSON     = "Application/json";
     }
 
+    interface Twitter{
+        String CUSTOMER_KEY         = "38zxp5aqkGaXSaAeauGDHulNr";
+        String CUSTOMER_SECRET      = "TyNEHQJj3dE6TV3u8hvMRkzbpGTfBiRbjfdWnBffPlh3N2h5UI";
+        String TOKEN                = "42560159-6UY0GJTNdz8EW9mUlG57rZ3Xed2fQM2B4pAgxwFr7";
+        String TOKEN_SECRET         = "Nan12CKFXQ1tNRIyflhrzefQc5TaM6thVFx2JsoFzH8ur";
+        String SCREEN_NAME          = "AchmadFauzi_212";
+    }
 }

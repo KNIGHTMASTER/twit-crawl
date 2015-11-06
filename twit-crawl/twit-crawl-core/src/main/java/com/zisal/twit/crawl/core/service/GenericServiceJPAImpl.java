@@ -45,4 +45,9 @@ public class GenericServiceJPAImpl<DATA, KEY> implements IGenericService<DATA, K
     public void deleteById(Class<DATA> dataClass, KEY id) {
         delete(read(dataClass, id));
     }
+
+    @Override
+    public void deleteAllEntities(Class<DATA> entityType) {
+        genericDAO.deleteAllEntities(entityType);
+    }
 }

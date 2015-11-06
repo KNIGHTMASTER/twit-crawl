@@ -37,6 +37,10 @@ public class TestGenericDAO {
     public void doSetup(){
         List<Employee> employees = null;
         try {
+            Employee em = new Employee();
+            em.setEmployeeName("sample");
+            em.setEmployeeAddress("sample");
+            iEmployeeService.save(em);
             employees = iEmployeeService.getAllEmployee();
             for(Employee employee : employees){
                 System.out.println(employee.toString());

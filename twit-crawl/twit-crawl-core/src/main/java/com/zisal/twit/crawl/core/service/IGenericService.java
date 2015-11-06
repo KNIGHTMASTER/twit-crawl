@@ -23,4 +23,7 @@ public interface IGenericService<DATA, KEY> {
 
     @Transactional
     void deleteById(Class<DATA> dataClass, KEY id);
+
+    @Transactional
+    void deleteAllEntities(Class<DATA> entityType);
 }
