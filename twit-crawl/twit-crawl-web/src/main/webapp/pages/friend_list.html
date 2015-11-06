@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title>Followers</title>
+</head>
+<body>
+<form action="#" th:method="GET" th:action="@{/friendship/synchronize/friend}">
+    <button type="submit">Synchronize</button>
+</form>
+
+
+    <div th:if="${friends != null}">
+        Friends Total : <div th:text="${friends.size()}"></div>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+            </tr>
+            <tr th:each="friend : ${friends}">
+                <td th:text="${friend.getId()}"></td>
+                <td th:text="${friend.getName()}"></td>
+                <td><img th:src="${friend.getImageUrl()}" /></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

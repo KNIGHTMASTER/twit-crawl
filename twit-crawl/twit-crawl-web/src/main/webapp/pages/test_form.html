@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title>Test Form</title>
+</head>
+<body>
+    <form action="#" th:action="@{/actionForm}">
+        <button type="submit">Search</button>
+    </form>
+
+<div th:if="${message != null}">
+    <label th:text="${message}"></label>
+</div>
+</body>
+</html>
