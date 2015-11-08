@@ -15,8 +15,8 @@ import java.security.Principal;
 public class ControllerIndex {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String helloIndex(Principal principal){
-        return principal != null ? "homeSignedIn" : "homeNotSignedIn";
+    public String index(){
+        return "index";
     }
 
     @RequestMapping(value = "hello")

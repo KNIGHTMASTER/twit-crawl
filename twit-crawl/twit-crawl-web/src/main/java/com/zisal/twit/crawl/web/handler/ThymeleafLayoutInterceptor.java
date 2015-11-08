@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
 
-    private static final String DEFAULT_LAYOUT = "pages/default";
+    private static final String DEFAULT_LAYOUT = "dashboard";
     private static final String DEFAULT_VIEW_ATTRIBUTE_NAME = "view";
 
     private String defaultLayout = DEFAULT_LAYOUT;
@@ -24,6 +24,11 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
     public void setViewAttributeName(String viewAttributeName) {
         Assert.hasLength(defaultLayout);
         this.viewAttributeName = viewAttributeName;
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        return super.preHandle(request, response, handler);
     }
 
     @Override

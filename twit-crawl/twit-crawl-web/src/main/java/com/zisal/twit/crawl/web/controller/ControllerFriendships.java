@@ -5,6 +5,7 @@ import com.zisal.twit.crawl.core.crawler.ICrawler;
 import com.zisal.twit.crawl.core.dto.DTOFriendship;
 import com.zisal.twit.crawl.core.model.Friendship;
 import com.zisal.twit.crawl.core.service.friend.IFriendshipService;
+import com.zisal.twit.crawl.web.handler.Layout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -31,11 +32,14 @@ public class ControllerFriendships {
     IFriendshipService friendshipService;
 
     @RequestMapping(value = "/follower/list")
+    @Layout(value = "index")
     public ModelAndView getFollowerList(){
         List<Friendship> localFollowers;
         List<DTOFriendship> followers = new ArrayList<DTOFriendship>();
         try{
             localFollowers = friendshipService.getAllFollowers();
+            System.out.println("followers size "+localFollowers.size()
+            );
             if(localFollowers.size() > 0){
                 for(Friendship friendship: localFollowers){
                     DTOFriendship dtoFriendship = new DTOFriendship();
@@ -68,6 +72,7 @@ public class ControllerFriendships {
     }
 
     @RequestMapping(value = "/friend/list")
+    @Layout(value = "index")
     public ModelAndView getFriendList(){
         List<Friendship> localFriends;
         List<DTOFriendship> friendships = new ArrayList<DTOFriendship>();
@@ -104,6 +109,7 @@ public class ControllerFriendships {
     }
 
     @RequestMapping(value = "/synchronize/friend", method = RequestMethod.GET)
+    @Layout(value = "index")
     public ModelAndView getSynchronizedFriend(){
         friendshipService.synchronizeFriendship(ApplicationConstant.Twitter.SCREEN_NAME);
         List<Friendship> friendships = friendshipService.getAllFriendship();
