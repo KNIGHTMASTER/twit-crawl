@@ -1,9 +1,7 @@
 package com.zisal.twit.crawl.core;
 
-import com.zisal.twit.crawl.core.model.Employee;
 import com.zisal.twit.crawl.core.model.Friendship;
 import com.zisal.twit.crawl.core.service.friend.IFriendshipService;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,7 +49,7 @@ public class TestFriendshipDAO {
         friendship.setName("1");
         friendship.setImageUrl("1");
         friendship.setType(1);
-        //iFriendshipService.save(friendship);
+        iFriendshipService.save(friendship);
 
         iFriendshipService.deleteAllEntities(Friendship.class);
     }

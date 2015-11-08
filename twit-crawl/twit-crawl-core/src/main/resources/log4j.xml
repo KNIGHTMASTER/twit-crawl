@@ -16,7 +16,11 @@
         <level value="ALL"/>
     </logger> -->
 
-    <logger name="com.zisal.insi">
+    <logger name="com.zisal.twit.crawl.core">
+        <level value="ALL"/>
+    </logger>
+
+    <logger name="com.zisal.twit.crawl.web">
         <level value="ALL"/>
     </logger>
 

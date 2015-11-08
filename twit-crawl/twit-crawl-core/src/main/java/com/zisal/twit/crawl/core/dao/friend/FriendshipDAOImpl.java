@@ -6,6 +6,7 @@ import com.zisal.twit.crawl.core.dao.GenericDAOJPAImpl;
 import com.zisal.twit.crawl.core.dto.DTOFriendship;
 import com.zisal.twit.crawl.core.model.Friendship;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
@@ -19,6 +20,7 @@ import java.util.List;
 public class FriendshipDAOImpl extends GenericDAOJPAImpl implements IFriendshipDAO {
 
     @Autowired
+    @Qualifier(value = "crawler")
     ICrawler crawler;
 
     @Override
