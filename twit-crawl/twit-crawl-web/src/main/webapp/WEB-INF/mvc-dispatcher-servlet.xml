@@ -40,4 +40,7 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
+    <mvc:interceptors>
+        <bean class="com.zisal.twit.crawl.web.handler.ThymeleafLayoutInterceptor"/>
+    </mvc:interceptors>
 </beans>
