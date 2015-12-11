@@ -15,6 +15,13 @@ public interface IFriendshipService extends IGenericService {
 
     List<Friendship> getAllFollowers();
 
+    Friendship getFriendshipById(Integer id);
+
+    Friendship getFriendshipByCode(String p_Code);
+
     void synchronizeFriendship(String screenName);
 
+    Friendship getFirstFriendship();
+
+    Friendship getNextFriendship(Friendship p_PrevFriendship);
 }

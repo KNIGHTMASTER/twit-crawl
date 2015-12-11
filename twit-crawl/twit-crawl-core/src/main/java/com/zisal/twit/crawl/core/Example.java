@@ -7,6 +7,8 @@
 package com.zisal.twit.crawl.core;
 
 import com.zisal.twit.crawl.core.constant.ApplicationConstant;
+import org.slf4j.*;
+import org.slf4j.Logger;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 
@@ -19,10 +21,11 @@ import java.util.List;
  */
 public class Example {
 
+    static Logger logger = org.slf4j.LoggerFactory.getLogger(Example.class);
     public static void main(String [] args){
         Twitter twitter = new TwitterFactory().getInstance();
-        twitter.setOAuthConsumer(ApplicationConstant.Twitter.CUSTOMER_KEY, ApplicationConstant.Twitter.CUSTOMER_SECRET);
-        twitter.setOAuthAccessToken(new AccessToken(ApplicationConstant.Twitter.TOKEN, ApplicationConstant.Twitter.TOKEN_SECRET));
+        twitter.setOAuthConsumer(ApplicationConstant.TwitterKey.CUSTOMER_KEY, ApplicationConstant.TwitterKey.CUSTOMER_SECRET);
+        twitter.setOAuthAccessToken(new AccessToken(ApplicationConstant.TwitterKey.TOKEN, ApplicationConstant.TwitterKey.TOKEN_SECRET));
         /*try{
             ResponseList<Status> responseList = twitter.getUserTimeline(new Paging(1, 5));
             for(Status s: responseList){
@@ -49,13 +52,19 @@ public class Example {
         } while ((cursor = ids != null ? ids.getNextCursor() : 0) != 0);*/
 
         long cursor = -1;
-        /*PagableResponseList<User> pagableFollowings = null;
+        PagableResponseList<User> pagableFollowings = null;
         List<User> listFriends = new ArrayList<>();
         do {
             try {
                 pagableFollowings = twitter.getFriendsList(twitter.getId(), cursor);
                 for (User user : pagableFollowings) {
-                    listFriends.add(user); // ArrayList<User>
+                    listFriends.add(user);
+                    logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "friend #1st level "+user.getName());
+                    PagableResponseList<User> _2ndLevelPageableFollowings = twitter.getFriendsList(user.getId(), cursor);
+                    for(User _2ndLevelFriend : _2ndLevelPageableFollowings){
+                        logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "added friend #2nd level "+ _2ndLevelFriend.getName());
+                        listFriends.add(_2ndLevelFriend);
+                    }
                 }
             } catch (TwitterException e) {
                 e.printStackTrace();
@@ -63,11 +72,12 @@ public class Example {
 
         } while ((cursor = pagableFollowings.getNextCursor()) != 0);
 
-        System.out.println("friend tota : "+listFriends.size());
+        logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "friend total : " + listFriends.size());
         for(User user:listFriends){
-            System.out.println("friend : "+user.getName());
-        }*/
+            logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "friend : "+user.getName());
+        }
 
+/*
         cursor = -1;
         PagableResponseList<User> pagableFollowers = null;
         List<User> listFollowers = new ArrayList<>();
@@ -83,6 +93,7 @@ public class Example {
             }
 
         } while ((cursor = pagableFollowers.getNextCursor()) != 0);
+*/
 
     }
 

@@ -39,4 +39,24 @@ public class FriendshipServiceImpl extends GenericServiceJPAImpl implements IFri
     public void synchronizeFriendship(String screenName) {
         friendshipDAO.synchronizeFriendship(screenName);
     }
+
+    @Override
+    public Friendship getFirstFriendship() {
+        return friendshipDAO.findFirstFriendship();
+    }
+
+    @Override
+    public Friendship getFriendshipById(Integer id) {
+        return friendshipDAO.getFriendshipById(id);
+    }
+
+    @Override
+    public Friendship getFriendshipByCode(String p_Code) {
+        return friendshipDAO.getFriendshipByCode(p_Code);
+    }
+
+    @Override
+    public Friendship getNextFriendship(Friendship p_PrevFriendship) {
+        return friendshipDAO.getNextFriendship(p_PrevFriendship);
+    }
 }

@@ -1,6 +1,7 @@
 package com.zisal.twit.crawl.core.model;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 /**
  * Created by Ladies Man on 11/1/2015.
@@ -12,7 +13,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private Integer id;
+    private BigInteger id;
 
     @Column(name = "employee_name")
     private String employeeName;
@@ -20,11 +21,11 @@ public class Employee {
     @Column(name = "employee_address")
     private String employeeAddress;
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

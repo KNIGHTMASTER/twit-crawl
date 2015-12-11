@@ -18,4 +18,12 @@ public interface IFriendshipDAO {
 
     @Transactional
     void synchronizeFriendship(String screenName);
+
+    Friendship getFriendshipById(Integer id);
+
+    Friendship getFriendshipByCode(String p_Code);
+
+    Friendship findFirstFriendship();
+
+    Friendship getNextFriendship(Friendship p_PrevFriendship);
 }

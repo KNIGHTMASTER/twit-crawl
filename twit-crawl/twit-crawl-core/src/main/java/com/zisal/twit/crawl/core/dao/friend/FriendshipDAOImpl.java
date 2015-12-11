@@ -51,8 +51,39 @@ public class FriendshipDAOImpl extends GenericDAOJPAImpl implements IFriendshipD
                 save(friendship);
             }
         }catch (Exception e){
-            logger.error(ApplicationConstant.LOG.ZUNA_ERROR, e.getLocalizedMessage());
+            logger.error(ApplicationConstant.LogTag.ZUNA_ERROR, e.getLocalizedMessage());
         }
 
+    }
+
+    @Override
+    public Friendship getFriendshipById(Integer id){
+        Query query = entityManager.createQuery("select a from friendship a where a.id =:friendshipId");
+        query.setParameter("friendshipId", id);
+        return (Friendship) query.getSingleResult();
+    }
+
+    @Override
+    public Friendship getFriendshipByCode(String p_Code) {
+        Query query = entityManager.createQuery("select a from friendship a where a.code =:friendshipCode");
+        query.setParameter("friendshipCode", p_Code);
+        return (Friendship) query.getSingleResult();
+    }
+
+    @Override
+    public Friendship findFirstFriendship() {
+        Query query = entityManager.createQuery("select a from friendship a where a.id = (" +
+                "select min(b.id) from friendship b ) ");
+        return (Friendship) query.getSingleResult();
+    }
+
+    @Override
+    public Friendship getNextFriendship(Friendship p_PrevFriendship) {
+        Query query = entityManager.createQuery(
+                "select a from friendship a where a.id = " +
+                        "(select min(b.id) from friendship b where b.id > :friendshipId)"
+        );
+        query.setParameter("friendshipId", p_PrevFriendship.getId());
+        return (Friendship) query.getSingleResult();
     }
 }

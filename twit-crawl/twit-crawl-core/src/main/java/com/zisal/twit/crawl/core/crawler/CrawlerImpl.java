@@ -1,9 +1,11 @@
 package com.zisal.twit.crawl.core.crawler;
 
 import com.zisal.twit.crawl.core.constant.ApplicationConstant;
+import com.zisal.twit.crawl.core.constant.ApplicationConstant.LogTag;
 import com.zisal.twit.crawl.core.dto.DTOFriendship;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.reflect.generics.reflectiveObjects.LazyReflectiveObjectGenerator;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 
@@ -25,8 +27,8 @@ public class CrawlerImpl implements ICrawler {
     }
 
     public CrawlerImpl(){
-        twitter.setOAuthConsumer(ApplicationConstant.Twitter.CUSTOMER_KEY, ApplicationConstant.Twitter.CUSTOMER_SECRET);
-        twitter.setOAuthAccessToken(new AccessToken(ApplicationConstant.Twitter.TOKEN, ApplicationConstant.Twitter.TOKEN_SECRET));
+        twitter.setOAuthConsumer(ApplicationConstant.TwitterKey.CUSTOMER_KEY, ApplicationConstant.TwitterKey.CUSTOMER_SECRET);
+        twitter.setOAuthAccessToken(new AccessToken(ApplicationConstant.TwitterKey.TOKEN, ApplicationConstant.TwitterKey.TOKEN_SECRET));
     }
 
     @Override
@@ -39,8 +41,7 @@ public class CrawlerImpl implements ICrawler {
             try {
                 pagableFollowers = twitter.getFollowersList(twitter.getId(), cursor);
                 for (User user : pagableFollowers) {
-                    System.out.println(user.getName());
-                    System.out.println("Followers "+user.getName());
+                    logger.info(LogTag.ZUNA_INFO, "Follower : "+user.getName());
                     DTOFriendship = new DTOFriendship();
                     DTOFriendship.setId(user.getId());
                     DTOFriendship.setName(user.getName());
@@ -48,7 +49,7 @@ public class CrawlerImpl implements ICrawler {
                     result.add(DTOFriendship);
                 }
             } catch (TwitterException e) {
-                logger.error(ApplicationConstant.LOG.ZUNA_ERROR, e.getLocalizedMessage());
+                logger.error(LogTag.ZUNA_ERROR, e.getLocalizedMessage());
             }
         } while ((cursor = pagableFollowers.getNextCursor()) != 0);
         return result;
@@ -70,9 +71,8 @@ public class CrawlerImpl implements ICrawler {
                     result.add(dtoFriendship);
                 }
             } catch (TwitterException e) {
-                logger.error(ApplicationConstant.LOG.ZUNA_ERROR, e.getLocalizedMessage());
+                logger.error(LogTag.ZUNA_ERROR, e.getLocalizedMessage());
             }
-
         } while ((cursor = pagableFollowings != null ? pagableFollowings.getNextCursor() : 0) != 0);
         return result;
     }

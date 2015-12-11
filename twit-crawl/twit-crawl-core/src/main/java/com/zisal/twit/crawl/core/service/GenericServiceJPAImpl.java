@@ -3,6 +3,8 @@ package com.zisal.twit.crawl.core.service;
 import com.zisal.twit.crawl.core.dao.IGenericDAO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Achmad Fauzi on 9/14/2015 : 5:48 AM.
  * mailto : fauzi.knightmaster.achmad@gmail.com
@@ -50,4 +52,11 @@ public class GenericServiceJPAImpl<DATA, KEY> implements IGenericService<DATA, K
     public void deleteAllEntities(Class<DATA> entityType) {
         genericDAO.deleteAllEntities(entityType);
     }
+
+    @Override
+    public List<DATA> loadAllEntity(Class<DATA> dataClass) {
+        return genericDAO.loadAllEntity(dataClass);
+    }
+
+
 }

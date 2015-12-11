@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by Achmad Fauzi on 9/14/2015 : 5:18 AM.
@@ -31,7 +31,7 @@ public class GenericDAOJPAImpl<DATA, KEY> implements IGenericDAO<DATA, KEY> {
             this.entityManager.persist(data);
             this.entityManager.flush();
         }else {
-            logger.warn(ApplicationConstant.LOG.ZUNA_WARNING, "Saved data is null");
+            logger.warn(ApplicationConstant.LogTag.ZUNA_WARNING, "Saved data is null");
         }
     }
 
@@ -41,7 +41,7 @@ public class GenericDAOJPAImpl<DATA, KEY> implements IGenericDAO<DATA, KEY> {
             this.entityManager.merge(data);
             this.entityManager.flush();
         }else {
-            logger.warn(ApplicationConstant.LOG.ZUNA_WARNING, "Merged data is null");
+            logger.warn(ApplicationConstant.LogTag.ZUNA_WARNING, "Merged data is null");
         }
     }
 
@@ -69,5 +69,11 @@ public class GenericDAOJPAImpl<DATA, KEY> implements IGenericDAO<DATA, KEY> {
                 .append(" e")
                 .toString();
         entityManager.createQuery(query).executeUpdate();
+    }
+
+    @Override
+    public List<DATA> loadAllEntity(Class<DATA> dataClass) {
+        Query query = entityManager.createQuery("select a from "+dataClass.getSimpleName()+ " a");
+        return query.getResultList();
     }
 }

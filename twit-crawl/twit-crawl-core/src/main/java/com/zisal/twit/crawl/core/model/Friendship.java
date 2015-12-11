@@ -1,20 +1,24 @@
 package com.zisal.twit.crawl.core.model;
 
 import javax.persistence.*;
+import java.math.BigInteger;
+import java.util.*;
 
 /**
  * Created by fauzi on 11/2/15.
  */
 @Entity(name = "friendship")
-@Table(name = "mst_friendship", schema = "master")
+@Table(name = "mst_friendship", schema = "master", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "friendship_code")
+})
 public class Friendship {
 
     @Id
     @Column(name = "friendship_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private BigInteger id;
 
-    @Column(name = "friendship_code", unique = true)
+    @Column(name = "friendship_code", unique = true, length = 50)
     private String code;
 
     @Column(name = "friendship_name")
@@ -26,13 +30,38 @@ public class Friendship {
     @Column(name = "friendship_type")
     private int type;
 
+    @Column(name = "friendship_level")
+    private int level;
 
-    public long getId() {
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="mst_friendship_link", schema = "master",
+            joinColumns = {
+                    @JoinColumn(name="friendship_link_me", referencedColumnName = "friendship_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name="friendship_link_friend", referencedColumnName = "friendship_id")
+            }
+    )
+    private List<Friendship> friendships = new ArrayList<>();
+
+    @ManyToMany(mappedBy="friendships")
+    private Set<Friendship> friendOfFriend = new HashSet<>();
+
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -59,12 +88,28 @@ public class Friendship {
         this.type = type;
     }
 
-    public String getCode() {
-        return code;
+    public int getLevel() {
+        return level;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public List<Friendship> getFriendships() {
+        return friendships;
+    }
+
+    public void setFriendships(List<Friendship> friendships) {
+        this.friendships = friendships;
+    }
+
+    public Set<Friendship> getFriendOfFriend() {
+        return friendOfFriend;
+    }
+
+    public void setFriendOfFriend(Set<Friendship> friendOfFriend) {
+        this.friendOfFriend = friendOfFriend;
     }
 
     @Override
@@ -74,7 +119,8 @@ public class Friendship {
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", type='" + type + '\'' +
+                ", type=" + type +
+                ", level=" + level +
                 '}';
     }
 }

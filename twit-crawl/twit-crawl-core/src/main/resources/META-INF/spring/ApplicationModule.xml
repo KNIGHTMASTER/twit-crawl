@@ -5,4 +5,5 @@
 
        <import resource="ApplicationContext-JPA.xml" />
        <import resource="ApplicationContext-Scan.xml" />
+
 </beans>

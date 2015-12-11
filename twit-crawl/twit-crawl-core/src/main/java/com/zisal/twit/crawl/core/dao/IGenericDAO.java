@@ -1,5 +1,7 @@
 package com.zisal.twit.crawl.core.dao;
 
+import java.util.List;
+
 /**
  * Created by Achmad Fauzi on 9/14/2015 : 5:17 AM.
  * mailto : fauzi.knightmaster.achmad@gmail.com
@@ -19,4 +21,6 @@ public interface IGenericDAO<DATA, KEY> {
     void deleteById(Class<DATA> dataClass, KEY id);
 
     void deleteAllEntities(Class<DATA> entityType);
+
+    List<DATA> loadAllEntity(Class<DATA> dataClass);
 }

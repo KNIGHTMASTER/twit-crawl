@@ -1,7 +1,11 @@
 package com.zisal.twit.crawl.core;
 
+import com.zisal.twit.crawl.core.model.AppConfiguration;
 import com.zisal.twit.crawl.core.model.Employee;
+import com.zisal.twit.crawl.core.model.Friendship;
+import com.zisal.twit.crawl.core.service.appconfiguration.IAppConfigurationService;
 import com.zisal.twit.crawl.core.service.employee.IEmployeeService;
+import com.zisal.twit.crawl.core.service.friend.IFriendshipService;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,12 +32,19 @@ public class TestGenericDAO {
     @Autowired
     private IEmployeeService iEmployeeService;
 
+    @InjectMocks
+    @Autowired
+    private IAppConfigurationService iAppConfigurationService;
+
+    @InjectMocks
+    @Autowired
+    private IFriendshipService friendshipService;
+
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
     public void doSetup(){
         List<Employee> employees = null;
         try {
@@ -75,5 +86,21 @@ public class TestGenericDAO {
             System.out.println(e.toString());
             //Assert.assertEquals(0, employees.size());
         }
+    }
+
+    public void doTestAppConfig(){
+        List<AppConfiguration> appConfigurationList =
+                iAppConfigurationService.loadAllEntity(AppConfiguration.class);
+        for(AppConfiguration appConfiguration: appConfigurationList){
+            System.out.println(appConfiguration.toString());
+        }
+        Assert.assertEquals(1, appConfigurationList.size());
+    }
+
+    @Test
+    public void doTestNextRecord(){
+        Friendship prevFriendship = friendshipService.getFirstFriendship();
+        Friendship nextFriendship = friendshipService.getNextFriendship(prevFriendship);
+        System.out.println(nextFriendship.toString());
     }
 }

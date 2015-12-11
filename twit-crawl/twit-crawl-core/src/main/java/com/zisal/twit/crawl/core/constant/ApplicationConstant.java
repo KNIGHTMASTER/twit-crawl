@@ -12,11 +12,11 @@ package com.zisal.twit.crawl.core.constant;
  */
 public interface ApplicationConstant {
 
-    interface LOG{
-        String ZUNA_INFO    = "ZUNA_INFO";
-        String ZUNA_ERROR   = "ZUNA_ERROR";
-        String ZUNA_DEBUG   = "ZUNA_DEBUG";
-        String ZUNA_WARNING = "ZUNA_WARNING";
+    interface LogTag {
+        String ZUNA_INFO    = "ZUNA_INFO {}";
+        String ZUNA_ERROR   = "ZUNA_ERROR {}";
+        String ZUNA_DEBUG   = "ZUNA_DEBUG {}";
+        String ZUNA_WARNING = "ZUNA_WARNING {}";
     }
 
     interface Table{
@@ -32,27 +32,26 @@ public interface ApplicationConstant {
         String MODIFIED_TIME    = "modified_time";
     }
 
-    interface VIEW{
+    interface View {
         String SCAFFOLD             = "/scaffold/";
         String CONTROLLER           = "/controller/";
         String REDIRECT             = "redirect:/";
 
-        interface URL{
+        interface Url {
             String LIST             = "/list";
             String EDIT_PARAM_ID    = "/edit/{id}";
         }
 
-        interface NAME{
+        interface Name {
             String FORM             = "_form";
             String EDIT             = "_edit";
             String LIST             = "_list";
         }
 
-        interface ACTION {
+        interface Action {
             String EDIT             = "edit";
             String DELETE           = "delete";
         }
-
     }
 
     interface Rest{
@@ -63,11 +62,15 @@ public interface ApplicationConstant {
         String APPLICATION_JSON     = "Application/json";
     }
 
-    interface Twitter{
+    interface TwitterKey {
         String CUSTOMER_KEY         = "38zxp5aqkGaXSaAeauGDHulNr";
         String CUSTOMER_SECRET      = "TyNEHQJj3dE6TV3u8hvMRkzbpGTfBiRbjfdWnBffPlh3N2h5UI";
         String TOKEN                = "42560159-6UY0GJTNdz8EW9mUlG57rZ3Xed2fQM2B4pAgxwFr7";
         String TOKEN_SECRET         = "Nan12CKFXQ1tNRIyflhrzefQc5TaM6thVFx2JsoFzH8ur";
         String SCREEN_NAME          = "AchmadFauzi_212";
+    }
+
+    interface CrawlerSetup{
+        int FRIENDSHIP_LEVEL        = 3;
     }
 }

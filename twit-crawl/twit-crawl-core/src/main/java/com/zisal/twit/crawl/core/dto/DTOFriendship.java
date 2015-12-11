@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class DTOFriendship implements Serializable{
 
+    private static final long serialVersionUID = 1717306424881335310L;
+
     private long id;
 
     private String name;
