@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title>App Configuration</title>
+    <link href="/resources/css/twitter/bootstrap.css" rel="stylesheet" th:href="@{/resources/css/twitter/bootstrap.css}" />
+    <link href="/resources/css/base.css" rel="stylesheet" th:href="@{/resources/css/base.css}" />
+</head>
+<body>
+<div id="content" th:fragment="content">
+
+    <button class="btn btn-primary color_23" type="submit">Add Configuration</button>
+
+    <!--Table-->
+    <div class="row-fluid ">
+        <div class="span12">
+            <div class="box paint color_23">
+                <div class="title">
+                    <h4> <i class=" icon-bar-chart"></i><span>Application Configuration List</span> </h4>
+                </div>
+                <!-- End .title -->
+                <div class="content top">
+                    <table style="width:100%;margin-bottom:0; " class="responsive table table-striped table-bordered" id="datatable_follower">
+                        <thead>
+                        <tr>
+                            <th class="no_sort">ID</th>
+                            <th class="no_sort to_hide_phone">CODE</th>
+                            <th class="no_sort to_hide_phone">VALUE</th>
+                            <th class="no_sort to_hide_phone">DESCRIPTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <div th:if="${appConfigurationList != null}">
+                                <tr th:each="config : ${appConfigurationList}">
+                                    <td th:text="${config.getId()}"></td>
+                                    <td th:text="${config.getCode()}"></td>
+                                    <td th:text="${config.getValue()}"></td>
+                                    <td th:text="${config.getDescription()}"></td>
+                                </tr>
+                            </div>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row-fluid  control-group mt15">
+                        <div class="span14">
+                            <div class="pagination pull-right ">
+                                <ul>
+                                    <li><a href="#">Prev</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End row-fluid -->
+                <a class="btn change_color_outside"><i class="paint_bucket"></i></a></div>
+            <!-- End .content -->
+        </div>
+        <!-- End box -->
+    </div>
+</div>
+</body>
+</html>

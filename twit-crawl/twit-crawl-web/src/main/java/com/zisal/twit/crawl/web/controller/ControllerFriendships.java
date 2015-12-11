@@ -50,7 +50,7 @@ public class ControllerFriendships {
                 }
             }else{
                 try{
-                    followers = crawler.getFollowers(ApplicationConstant.Twitter.SCREEN_NAME);
+                    followers = crawler.getFollowers(ApplicationConstant.TwitterKey.SCREEN_NAME);
                     for(DTOFriendship friendship: followers){
                         System.out.println("Friendship "+friendship.toString());
                         Friendship friendshipModel = new Friendship();
@@ -88,7 +88,7 @@ public class ControllerFriendships {
                 }
             }else{
                 try{
-                    friendships = crawler.getFriends(ApplicationConstant.Twitter.SCREEN_NAME);
+                    friendships = crawler.getFriends(ApplicationConstant.TwitterKey.SCREEN_NAME);
                     for(DTOFriendship friendship: friendships){
                         Friendship friendshipModel = new Friendship();
                         friendshipModel.setCode(String.valueOf(friendship.getId()));
@@ -111,7 +111,7 @@ public class ControllerFriendships {
     @RequestMapping(value = "/synchronize/friend", method = RequestMethod.GET)
     @Layout(value = "index")
     public ModelAndView getSynchronizedFriend(){
-        friendshipService.synchronizeFriendship(ApplicationConstant.Twitter.SCREEN_NAME);
+        friendshipService.synchronizeFriendship(ApplicationConstant.TwitterKey.SCREEN_NAME);
         List<Friendship> friendships = friendshipService.getAllFriendship();
         return new ModelAndView("friend_list", "friends", friendships);
     }

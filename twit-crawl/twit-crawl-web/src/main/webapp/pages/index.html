@@ -13,10 +13,10 @@
   <link href="/resources/css/base.css" rel="stylesheet" th:href="@{/resources/css/base.css}" />
   <link href="/resources/js/plugins/validation/demo/css/reset.css" rel="stylesheet" th:href="@{/resources/js/plugins/validation/demo/css/reset.css}" />
   <link href="/resources/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" th:href="@{/resources/css/jquery-ui-1.8.23.custom.css}" />
-  <script src="/resources/js/plugins/modernizr.custom.32549.js" th:href="@{/resources/js/plugins/modernizr.custom.32549.js}"></script>
+  <script th:src="@{/resources/js/plugins/modernizr.custom.32549.js}"></script>
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
-  <script src="/resources/js/html5.js" th:href="@{/resources/js/html5.js}"></script>
+  <script th:src="@{/resources/js/html5.js}"></script>
   <![endif]-->
 </head>
 
@@ -57,7 +57,8 @@
           <ul id="collapse1" class="accordion-body collapse">
             <li><a href="#" th:href="@{/friendship/friend/list}">Friends</a></li>
             <li><a href="#" th:href="@{/friendship/follower/list}">Followers</a></li>
-            <li><a href="#" th:href="@{/sample1}">Sample1</a></li>
+            <li><a href="#" th:href="@{/crawler/scheduler}">Crawler Scheduler</a></li>
+            <li><a href="#" th:href="@{/appConfiguration}">Application Configuration</a></li>
             <li><a href="#" th:href="@{/sample2}">Sample2</a></li>
           </ul>
         </li>
@@ -66,7 +67,7 @@
             <li><a href="statistics.html">Page Rank</a></li>
           </ul>
         </li>
-        <li class="color_2"> <a href="presentasi.html" data-parent="#sidebar_menu" class="widgets"> <img src="/resources/img/menu_icons/others.png" th:href="@{/resources/img/menu_icons/others.png}"/><span>Presentasi</span></a> </li>
+        <li class="color_2"> <a href="presentasi.html" data-parent="#sidebar_menu" class="widgets"> <img th:src="@{/resources/img/menu_icons/others.png}"/><span>Presentasi</span></a> </li>
       </ul>
       <div class="menu_states row-fluid container ">
         <h2 class="pull-left">Menu Settings</h2>
@@ -557,65 +558,58 @@
 </div>
 <!-- End .background_changer -->
 
-<!-- /container -->
-
 <!-- Le javascript
     ================================================== -->
 <!-- General scripts -->
-<script src="/resources/js/jquery.js" th:href="@{/resources/js/jquery.js}" type="text/javascript"> </script>
+<script th:src="@{/resources/js/jquery.js}" type="text/javascript"> </script>
 <!--[if !IE]> -->
 <!--[if !IE]> -->
-<script src="/resources/js/plugins/enquire.min.js" th:href="@{/resources/js/plugins/enquire.min.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/plugins/enquire.min.js}" type="text/javascript"></script>
 <!-- <![endif]-->
 <!-- <![endif]-->
 <!--[if lt IE 7]>
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"  th:href="@{http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js}" type="text/javascript"></script>
+<script th:src="@{http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js}" type="text/javascript"></script>
 <![endif]-->
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/jquery.sparkline.min.js" th:href="@{/resources/js/plugins/jquery.sparkline.min.js}"></script>
-<script src="/resources/js/plugins/excanvas.compiled.js" th:href="@{/resources/js/plugins/excanvas.compiled.js}"></script>
-<script src="/resources/js/bootstrap-transition.js" th:href="@{/resources/js/bootstrap-transition.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-alert.js" th:href="@{/resources/js/bootstrap-alert.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-modal.js" th:href="@{/resources/js/bootstrap-modal.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-dropdown.js" th:href="@{/resources/js/bootstrap-dropdown.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-scrollspy.js" th:href="@{/resources/js/bootstrap-scrollspy.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-tab.js" th:href="@{/resources/js/bootstrap-tab.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-tooltip.js" th:href="@{/resources/js/bootstrap-tooltip.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-popover.js" th:href="@{/resources/js/bootstrap-popover.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-button.js" th:href="@{/resources/js/bootstrap-button.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-collapse.js" th:href="@{/resources/js/bootstrap-collapse.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-carousel.js" th:href="@{/resources/js/bootstrap-carousel.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-typeahead.js" th:href="@{/resources/js/bootstrap-typeahead.js}" type="text/javascript"></script>
-<script src="/resources/js/bootstrap-affix.js" th:href="@{/resources/js/bootstrap-affix.js}" type="text/javascript"></script>
-<script src="/resources/js/fileinput.jquery.js" th:href="@{/resources/js/fileinput.jquery.js}" type="text/javascript"></script>
-<script src="/resources/js/jquery-ui-1.8.23.custom.min.js" th:href="@{/resources/js/jquery-ui-1.8.23.custom.min.js}" type="text/javascript"></script>
-<script src="/resources/js/jquery.touchdown.js" th:href="@{/resources/js/jquery.touchdown.js}" type="text/javascript"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/jquery.uniform.min.js" th:href="@{/resources/js/plugins/jquery.uniform.min.js}"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/jquery.tinyscrollbar.min.js" th:href="@{/resources/js/plugins/jquery.tinyscrollbar.min.js}"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/jnavigate.jquery.min.js" th:href="@{/resources/js/jnavigate.jquery.min.js}"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/jquery.touchSwipe.min.js" th:href="@{/resources/js/jquery.touchSwipe.min.js}"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/jquery.peity.min.js" th:href="@{/resources/js/plugins/jquery.peity.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/jquery.sparkline.min.js}"></script>
+<script th:src="@{/resources/js/plugins/excanvas.compiled.js}"></script>
+<script th:src="@{/resources/js/bootstrap-transition.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-alert.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-modal.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-dropdown.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-scrollspy.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-tab.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-tooltip.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-popover.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-button.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-collapse.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-carousel.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-typeahead.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap-affix.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/fileinput.jquery.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/jquery-ui-1.8.23.custom.min.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/jquery.touchdown.js}" type="text/javascript"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/jquery.uniform.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/jquery.tinyscrollbar.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/jnavigate.jquery.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/jquery.touchSwipe.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/jquery.peity.min.js}"></script>
 
 <!-- Flot charts -->
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/flot/jquery.flot.js" th:href="@{/resources/js/plugins/flot/jquery.flot.js}"></script>
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/flot/jquery.flot.resize.js" th:href="@{/resources/js/plugins/flot/jquery.flot.resize.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/flot/jquery.flot.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/flot/jquery.flot.resize.js}"></script>
 
 <!-- Data tables -->
-<script type="text/javascript" language="javascript" src="/resources/js/plugins/datatables/js/jquery.dataTables.js" th:href="@{/resources/js/plugins/datatables/js/jquery.dataTables.js}"></script>
+<script type="text/javascript" language="javascript" th:src="@{/resources/js/plugins/datatables/js/jquery.dataTables.js}"></script>
 
 <!-- Task plugin -->
-<script language="javascript" type="text/javascript" src="/resources/js/plugins/knockout-2.0.0.js" th:href="@{/resources/js/plugins/knockout-2.0.0.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/resources/js/plugins/knockout-2.0.0.js}"></script>
 
 <!-- Custom made scripts for this template -->
-<script src="/resources/js/scripts.js" th:href="@{/resources/js/scripts.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/scripts.js}" type="text/javascript"></script>
 <script type="text/javascript">
   /**** Specific JS for this page ****/
   /* Todo Plugin */
   var todo_data = [
-    {id: 1, title: "<i class='gicon-gift icon-white'></i>Have tea with the Queen", isDone: false},
-    {id: 2, title: "<i class='gicon-briefcase icon-white'></i>Steal  James Bond car", isDone: true},
-    {id: 3, title: "<i class='gicon-heart icon-white'></i>Confirm that this template is awesome", isDone: false},
-    {id: 4, title: "<i class='gicon-thumbs-up icon-white'></i>Nothing", isDone: false},
-    {id: 5, title: "<i class='gicon-fire icon-white'></i>Play solitaire", isDone: false}
   ];
 
 
@@ -642,14 +636,14 @@
     self.incompleteTasks = ko.computed(function() {
       return ko.utils.arrayFilter(self.tasks(),
               function(task) {
-                return !task.isDone() &amp;&amp; !task._destroy;
+                return !task.isDone() !task._destroy;
               });
     });
 
     self.completeTasks = ko.computed(function(){
       return ko.utils.arrayFilter(self.tasks(),
               function(task) {
-                return task.isDone() &amp;&amp; !task._destroy;
+                return task.isDone() !task._destroy;
               });
     });
 
