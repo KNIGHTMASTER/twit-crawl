@@ -97,10 +97,16 @@ public class TestGenericDAO {
         Assert.assertEquals(1, appConfigurationList.size());
     }
 
-    @Test
     public void doTestNextRecord(){
         Friendship prevFriendship = friendshipService.getFirstFriendship();
         Friendship nextFriendship = friendshipService.getNextFriendship(prevFriendship);
         System.out.println(nextFriendship.toString());
+    }
+
+    @Test
+    public void getByCode(){
+        Integer lowestLevel = friendshipService.getLowestLevelOfFriendship() - 1;
+        Friendship friendship = friendshipService.getFriendshipByCodeAndLowestLevel("18211861", lowestLevel);
+        System.out.println("GET BY CODE : "+friendship.toString());
     }
 }

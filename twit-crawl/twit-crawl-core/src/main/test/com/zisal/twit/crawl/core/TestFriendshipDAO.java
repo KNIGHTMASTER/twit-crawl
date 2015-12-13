@@ -65,31 +65,46 @@ public class TestFriendshipDAO {
 
         /*ANDI - ANI - BUDI - SITI*/
 
-        /*Andi has friend budi and siti*/
-        andi.getFriendships().add(budi);
+        /*andi.getFriendships().add(budi);
         andi.getFriendships().add(siti);
 
-        /*Ani has friend only siti*/
         ani.getFriendships().add(siti);
 
         budi.getFriendships().add(siti);
 
         siti.getFriendships().add(andi);
-        siti.getFriendships().add(budi);
+        siti.getFriendships().add(budi);*/
 
         List<Friendship> friendships = new ArrayList<>();
-        friendships.add(andi);
+        //friendships.add(andi);
         friendships.add(ani);
         friendships.add(budi);
         friendships.add(siti);
 
+        List<Friendship> friendships2 = new ArrayList<>();
+        friendships2.add(budi);
+        friendships2.add(siti);
+
         for(Friendship friendship : friendships){
-            logger.info("FRIENDSHIP : ", friendship.getCode());
-            try{
-                iFriendshipService.save(friendship);
-            }catch (Exception e){
-                iFriendshipService.merge(friendship);
-            }
+            logger.info("FRIENDSHIP {} : ", friendship.getCode());
+            andi.getFriendships().add(friendship);
+        }
+
+        try{
+            iFriendshipService.save(andi);
+        }catch (Exception e){
+            iFriendshipService.merge(andi);
+        }
+
+        for(Friendship friendship : friendships2){
+            logger.info("FRIENDSHIP {} : ", friendship.getCode());
+            ani.getFriendships().add(friendship);
+        }
+
+        try{
+            iFriendshipService.save(ani);
+        }catch (Exception e){
+            iFriendshipService.merge(ani);
         }
     }
 }

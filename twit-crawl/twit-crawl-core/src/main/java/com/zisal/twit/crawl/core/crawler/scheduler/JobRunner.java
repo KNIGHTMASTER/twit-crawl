@@ -102,7 +102,10 @@ public class JobRunner implements IJobRunner {
                 User user = twitter.showUser(Long.valueOf(crawlerHistory));
                 logger.info(LogTag.ZUNA_INFO, "Restart scheduler from : "+user.getName());
                 PagableResponseList<User> _2ndLevelPageableFollowings = twitter.getFriendsList(user.getId(), cursor);
-                Friendship mainFriend = friendshipService.getFriendshipByCode(crawlerHistory);
+                logger.info(LogTag.ZUNA_INFO, "Restart 2");
+                Integer lowestLevel = friendshipService.getLowestLevelOfFriendship() - 1;
+                Friendship mainFriend = friendshipService.getFriendshipByCodeAndLowestLevel(crawlerHistory, lowestLevel);
+                logger.info(LogTag.ZUNA_INFO, "Restart 3 "+mainFriend.toString());
                 for(User _2ndLevelFriend : _2ndLevelPageableFollowings){
                     logger.info(LogTag.ZUNA_INFO, "friend 2nd level " + _2ndLevelFriend.getName());
                     Friendship friendship = new Friendship();
@@ -111,15 +114,15 @@ public class JobRunner implements IJobRunner {
                     friendship.setImageUrl(_2ndLevelFriend.getMiniProfileImageURL());
                     friendship.setCode(String.valueOf(_2ndLevelFriend.getId()));
                     friendship.setLevel((mainFriend.getLevel() + 1));
-
                     mainFriend.getFriendships().add(friendship);
-                    try{
-                        friendshipService.save(mainFriend);
-                    }catch (Exception e){
-                        friendshipService.merge(mainFriend);
-                    }
-                    logger.info(LogTag.ZUNA_INFO, "Main Friend " + mainFriend.getName() + " saved");
                 }
+                logger.info(LogTag.ZUNA_INFO, "Restart 4");
+                try{
+                    friendshipService.save(mainFriend);
+                }catch (Exception e){
+                    friendshipService.merge(mainFriend);
+                }
+                logger.info(LogTag.ZUNA_INFO, "Main Friend " + mainFriend.getName() + " saved");
                 Friendship nextFriendship = friendshipService.getNextFriendship(mainFriend);
                 CrawlerHistory _2nsLevelHistory = new CrawlerHistory();
                 _2nsLevelHistory.setCode(nextFriendship.getCode());

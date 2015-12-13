@@ -64,9 +64,10 @@ public class FriendshipDAOImpl extends GenericDAOJPAImpl implements IFriendshipD
     }
 
     @Override
-    public Friendship getFriendshipByCode(String p_Code) {
-        Query query = entityManager.createQuery("select a from friendship a where a.code =:friendshipCode");
+    public Friendship getFriendshipByCodeAndLowestLevel(String p_Code, Integer p_LowestLevel) {
+        Query query = entityManager.createQuery("select a from friendship a where a.code =:friendshipCode and a.level =:lowestLevel");
         query.setParameter("friendshipCode", p_Code);
+        query.setParameter("lowestLevel", p_LowestLevel);
         return (Friendship) query.getSingleResult();
     }
 
@@ -85,5 +86,11 @@ public class FriendshipDAOImpl extends GenericDAOJPAImpl implements IFriendshipD
         );
         query.setParameter("friendshipId", p_PrevFriendship.getId());
         return (Friendship) query.getSingleResult();
+    }
+
+    @Override
+    public Integer getLowestLevelOfFriendship() {
+        Query query = entityManager.createQuery("select max(a.level) from friendship a", Integer.class);
+        return (Integer) query.getSingleResult();
     }
 }

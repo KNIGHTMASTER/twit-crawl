@@ -51,12 +51,17 @@ public class FriendshipServiceImpl extends GenericServiceJPAImpl implements IFri
     }
 
     @Override
-    public Friendship getFriendshipByCode(String p_Code) {
-        return friendshipDAO.getFriendshipByCode(p_Code);
+    public Friendship getFriendshipByCodeAndLowestLevel(String p_Code, Integer p_LowestLevel) {
+        return friendshipDAO.getFriendshipByCodeAndLowestLevel(p_Code, p_LowestLevel);
     }
 
     @Override
     public Friendship getNextFriendship(Friendship p_PrevFriendship) {
         return friendshipDAO.getNextFriendship(p_PrevFriendship);
+    }
+
+    @Override
+    public Integer getLowestLevelOfFriendship() {
+        return friendshipDAO.getLowestLevelOfFriendship();
     }
 }

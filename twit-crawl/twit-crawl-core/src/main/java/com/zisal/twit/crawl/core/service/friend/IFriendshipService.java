@@ -17,11 +17,13 @@ public interface IFriendshipService extends IGenericService {
 
     Friendship getFriendshipById(Integer id);
 
-    Friendship getFriendshipByCode(String p_Code);
+    Friendship getFriendshipByCodeAndLowestLevel(String p_Code, Integer p_LowestLevel);
 
     void synchronizeFriendship(String screenName);
 
     Friendship getFirstFriendship();
 
     Friendship getNextFriendship(Friendship p_PrevFriendship);
+
+    Integer getLowestLevelOfFriendship();
 }

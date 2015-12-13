@@ -56,15 +56,15 @@ public class Example {
         List<User> listFriends = new ArrayList<>();
         do {
             try {
-                pagableFollowings = twitter.getFriendsList(twitter.getId(), cursor);
+                pagableFollowings = twitter.getFriendsList(18211861, cursor);
                 for (User user : pagableFollowings) {
                     listFriends.add(user);
                     logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "friend #1st level "+user.getName());
-                    PagableResponseList<User> _2ndLevelPageableFollowings = twitter.getFriendsList(user.getId(), cursor);
+                    /*PagableResponseList<User> _2ndLevelPageableFollowings = twitter.getFriendsList(user.getId(), cursor);
                     for(User _2ndLevelFriend : _2ndLevelPageableFollowings){
                         logger.info(ApplicationConstant.LogTag.ZUNA_INFO, "added friend #2nd level "+ _2ndLevelFriend.getName());
                         listFriends.add(_2ndLevelFriend);
-                    }
+                    }*/
                 }
             } catch (TwitterException e) {
                 e.printStackTrace();

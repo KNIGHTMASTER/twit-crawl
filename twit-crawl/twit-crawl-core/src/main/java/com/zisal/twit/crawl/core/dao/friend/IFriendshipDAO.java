@@ -21,9 +21,11 @@ public interface IFriendshipDAO {
 
     Friendship getFriendshipById(Integer id);
 
-    Friendship getFriendshipByCode(String p_Code);
+    Friendship getFriendshipByCodeAndLowestLevel(String p_Code, Integer p_LowestLevel);
 
     Friendship findFirstFriendship();
 
     Friendship getNextFriendship(Friendship p_PrevFriendship);
+
+    Integer getLowestLevelOfFriendship();
 }
